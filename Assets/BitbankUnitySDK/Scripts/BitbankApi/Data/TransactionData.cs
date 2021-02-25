@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace BitbankUnitySDK
 {
+    public class TransactionParseData
+    {
+        public List<TransactionData> transactions;
+    }
+
     public class TransactionData {
         public string transaction_id;
         public string side; // buy, sell

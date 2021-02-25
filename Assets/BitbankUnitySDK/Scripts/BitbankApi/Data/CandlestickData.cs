@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace BitbankUnitySDK
 {
+    public class CandlestickParseData
+    {
+        public List<CandlestickData> candlestick;
+    }
+
     public class CandlestickData {
         public string type;
         public List<List<string>> ohlcv; // [open, high, low, close, volume, unix timestamp (milliseconds)]
