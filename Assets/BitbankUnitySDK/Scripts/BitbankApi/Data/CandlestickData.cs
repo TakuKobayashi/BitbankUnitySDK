@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BitbankUnitySDK
 {
-    public class CandlestickParseData
+    internal class CandlestickParseData
     {
         public List<CandlestickData> candlestick;
     }

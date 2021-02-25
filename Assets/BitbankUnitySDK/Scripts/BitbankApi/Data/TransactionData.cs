@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BitbankUnitySDK
 {
-    public class TransactionParseData
+    internal class TransactionParseData
     {
         public List<TransactionData> transactions;
     }
