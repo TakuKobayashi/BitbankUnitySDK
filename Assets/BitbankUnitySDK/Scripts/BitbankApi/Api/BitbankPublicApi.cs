@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace BitbankUnitySDK
 {
@@ -11,7 +12,7 @@ namespace BitbankUnitySDK
             HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/depth", pair), onSuccess: (dh) =>
             {
                 Debug.Log(dh.text);
-                ApiResponseTemplate<DepthData> responseData = JsonUtility.FromJson<ApiResponseTemplate<DepthData>>(dh.text);
+                ApiResponseTemplate<DepthData> responseData = JsonConvert.DeserializeObject<ApiResponseTemplate<DepthData>>(dh.text);
                 if(onSuccess != null)
                 {
                     onSuccess(responseData.data);
@@ -24,7 +25,7 @@ namespace BitbankUnitySDK
             HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/transactions/{1}/", pair, dateString), onSuccess: (dh) =>
             {
                 Debug.Log(dh.text);
-                ApiResponseTemplate<TransactionParseData> responseData = JsonUtility.FromJson<ApiResponseTemplate<TransactionParseData>>(dh.text);
+                ApiResponseTemplate<TransactionParseData> responseData = JsonConvert.DeserializeObject<ApiResponseTemplate<TransactionParseData>>(dh.text);
                 if (onSuccess != null)
                 {
                     onSuccess(responseData.data.transactions);
@@ -37,7 +38,7 @@ namespace BitbankUnitySDK
             HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/ticker", pair), onSuccess: (dh) =>
             {
                 Debug.Log(dh.text);
-                ApiResponseTemplate<TickerData> responseData = JsonUtility.FromJson<ApiResponseTemplate<TickerData>>(dh.text);
+                ApiResponseTemplate<TickerData> responseData = JsonConvert.DeserializeObject<ApiResponseTemplate<TickerData>>(dh.text);
                 if (onSuccess != null)
                 {
                     onSuccess(responseData.data);
@@ -50,7 +51,7 @@ namespace BitbankUnitySDK
             HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/candlestick/{1}/{2}", pair, candleType, dateString), onSuccess: (dh) =>
             {
                 Debug.Log(dh.text);
-                ApiResponseTemplate<CandlestickParseData> responseData = JsonUtility.FromJson<ApiResponseTemplate<CandlestickParseData>>(dh.text);
+                ApiResponseTemplate<CandlestickParseData> responseData = JsonConvert.DeserializeObject<ApiResponseTemplate<CandlestickParseData>>(dh.text);
                 if (onSuccess != null)
                 {
                     onSuccess(responseData.data.candlestick);
