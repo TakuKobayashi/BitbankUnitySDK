@@ -22,7 +22,7 @@ namespace BitbankUnitySDK
 
         public static void Transaction(string pair, string dateString, Action<List<TransactionData>> onSuccess = null)
         {
-            HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/transactions/{1}/", pair, dateString), onSuccess: (dh) =>
+            HTTPManager.Instance.Request(BaseUrl() + string.Format("/{0}/transactions/{1}", pair, dateString), onSuccess: (dh) =>
             {
                 Debug.Log(dh.text);
                 ApiResponseTemplate<TransactionParseData> responseData = JsonConvert.DeserializeObject<ApiResponseTemplate<TransactionParseData>>(dh.text);
